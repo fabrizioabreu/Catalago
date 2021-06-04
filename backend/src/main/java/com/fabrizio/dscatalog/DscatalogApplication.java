@@ -10,5 +10,4 @@ public class DscatalogApplication {
 		SpringApplication.run(DscatalogApplication.class, args);
 	}
 
-	int x = 0;
 }
