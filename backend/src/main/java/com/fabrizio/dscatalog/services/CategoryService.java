@@ -7,14 +7,17 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fabrizio.dscatalog.dto.CategoryDTO;
 import com.fabrizio.dscatalog.entities.Category;
 import com.fabrizio.dscatalog.repositories.CategoryRepository;
+import com.fabrizio.dscatalog.services.exceptions.DatabaseException;
 import com.fabrizio.dscatalog.services.exceptions.ResourceNotFoundException;
-
+ 
 @Service
 public class CategoryService {
 	
@@ -50,9 +53,20 @@ public class CategoryService {
 			entity = repository.save(entity);
 			return new CategoryDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("ID não encontrado!");
+			throw new ResourceNotFoundException("ID: " + id + " não encontrado!");
 		}
 		
+	}
+
+	// Não coloca o @Transactional para capturar a exceção do banco de dados, caso ele tenha alguma atribuição
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("ID: " + id + " não encontrado!");
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Vioçação de integridade no Banco de Dados, para o ID: " + id);
+		}
 	}
 
 }
