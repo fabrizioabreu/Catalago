@@ -18,44 +18,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.fabrizio.dscatalog.dto.ProductDTO;
-import com.fabrizio.dscatalog.services.ProductService;
+import com.fabrizio.dscatalog.dto.ClientDTO;
+import com.fabrizio.dscatalog.services.ClientService;
 
 @Controller
-@RequestMapping(value = "/products")
-public class ProductResource {
+@RequestMapping(value = "/clients")
+public class ClientResourse {
 
 	@Autowired
-	private ProductService service;
+	private ClientService service;
 
 	@GetMapping
-	public ResponseEntity<Page<ProductDTO>> findall(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public ResponseEntity<Page<ClientDTO>> findall(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
-			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy) {
+			@RequestParam(value = "orderBy", defaultValue = "name") String orderby) {
 
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderby);
 
-		Page<ProductDTO> list = service.findAllPaged(pageRequest);
+		Page<ClientDTO> list = service.findAllPaged(pageRequest);
 
 		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
-		ProductDTO dto = service.findById(id);
+	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+		ClientDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 
 	@PostMapping
-	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto) {
+	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
+	public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}

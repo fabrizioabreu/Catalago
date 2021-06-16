@@ -54,3 +54,14 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (22, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (23, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (24, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (25, 3);
+
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('João Paulo', '65322793070', 4300.0, '1999-05-01T05:47:01.804Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Natasha Telles', '12940713006', 4900.0, '1972-08-22T20:19:36.060Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Fabrizio Abreu', '15635261078', 6300.0, '1994-05-20T11:51:48.241Z', 3);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Maria Helena', '42392423040', 4100.0, '1992-08-31T20:22:01.335Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Rita de Cassia', '02865416020', 3000.0, '1980-01-15T23:35:04.311Z', 5);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Jair Barbosa', '94724155043', 2100.0, '1985-12-15T08:40:33.205Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Tony Stark', '39041521062', 1100.0, '1973-10-26T00:33:59.156Z', 3);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Heitor Garcia', '76190096042', 2800.0, '1988-05-21T07:33:03.009Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Laura de Souza', '47727163007', 4000.0, '1999-07-09T06:41:23.538Z', 4);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Elisa Albuquerque', '60624881008', 5400.0, '1977-11-16T03:01:13.466Z', 2);
