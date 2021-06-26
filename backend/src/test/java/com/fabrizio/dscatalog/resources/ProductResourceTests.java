@@ -76,7 +76,7 @@ public class ProductResourceTests {
 	}
 	
 	@Test
-	public void deletDeveriaRetornarNoDependentId() throws Exception {
+	public void deletDeveriaRetornarBadRequest400() throws Exception {
 		
 		mockMvc.perform(delete("/products/{id}", dependentId)
 				.accept(MediaType.APPLICATION_JSON))
