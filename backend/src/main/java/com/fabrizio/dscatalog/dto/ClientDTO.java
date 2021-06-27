@@ -87,6 +87,4 @@ public class ClientDTO implements Serializable{
 	public void setChildren(Integer children) {
 		this.children = children;
 	}
-
-	
 }
