@@ -65,6 +65,7 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (23, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (24, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (25, 3);
 
+
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('João Paulo', '65322793070', 4300.0, '1999-05-01T05:47:01.804Z', 2);
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Natasha Telles', '12940713006', 4900.0, '1972-08-22T20:19:36.060Z', 1);
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Fabrizio Abreu', '15635261078', 6300.0, '1994-05-20T11:51:48.241Z', 3);
