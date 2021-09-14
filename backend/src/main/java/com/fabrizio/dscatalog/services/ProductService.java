@@ -38,13 +38,24 @@ public class ProductService {
 //		return list.map(x -> new ProductDTO(x));
 //	}
 	
+//	COM N+1 consulta
 	@Transactional(readOnly = true)
 	public Page<ProductDTO> findAllPaged(Long categoryId, String name, Pageable pageable) {
 	 	List<Category> categories = (categoryId == 0) ? null :
 	 		Arrays.asList(categoryRepository.getOne(categoryId));
-	 	Page<Product> list = repository.find(categories, name, pageable);
-	 	return list.map(x -> new ProductDTO(x));
+	 	Page<Product> page = repository.find(categories, name, pageable);
+	 	repository.findProductsWithCategories(page.getContent());
+	 	return page.map(x -> new ProductDTO(x, x.getCategories()));
 	}
+	
+//	SEM N+1 consulta
+//	@Transactional(readOnly = true)
+//	public Page<ProductDTO> findAllPaged(Long categoryId, String name, Pageable pageable) {
+//	 	List<Category> categories = (categoryId == 0) ? null :
+//	 		Arrays.asList(categoryRepository.getOne(categoryId));
+//	 	Page<Product> list = repository.find(categories, name, pageable);
+//	 	return list.map(x -> new ProductDTO(x));
+//	}
 	
 //	@Transactional(readOnly = true)
 //	public Page<ProductDTO> findAllPaged(Long categoryId, String name, Pageable pageable) {
